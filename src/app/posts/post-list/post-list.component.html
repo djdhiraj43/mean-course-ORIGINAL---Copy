@@ -6,7 +6,7 @@
     <p>{{ post.content }}</p>
     <mat-action-row>
       <button mat-button color="primary"><b>EDIT</b></button>
-      <button mat-button color="warn"><b>DELETE</b></button>
+      <button mat-button color="warn" (click)="onDelete(post.id)"><b>DELETE</b></button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
