@@ -1,3 +1,5 @@
+git add .
+
 git commit -m "commited on 21 May 2019"
 
 git push -u origin master
