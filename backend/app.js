@@ -8,12 +8,13 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0-h5lhb.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://admin:"+ process.env.MONGO_ATLAS_PW +"@cluster0-h5lhb.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true })
   .then(() => {
     console.log("Connected to the database!");
   })
-  .catch(() => {
+  .catch((err) => {
     console.log("Connection failed");
+    console.log(err);
   })
 
 app.use(bodyParser.json());
@@ -22,7 +23,7 @@ app.use("/images", express.static(path.join("backend/images"))); //express.stati
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
   next();
 })

@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { Post } from '../post.model';
 import { mimeType } from './mime-type-validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector : 'app-post-create',
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
 
-export class  PostCreateComponent implements OnInit {
+export class  PostCreateComponent implements OnInit, OnDestroy {
   form: FormGroup;
   imagePreview: string;
   enteredTitle = '';
@@ -19,10 +21,14 @@ export class  PostCreateComponent implements OnInit {
   private postId: string;
   post: Post;
   isLoading = false;
+  private authStatusSub: Subscription;
 
-  constructor(public postsService: PostsService, public route: ActivatedRoute) {};
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {};
 
   ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(authStatus => {
+      this.isLoading = false;
+    }); //We are stopping the loading whenever authStatus changes
     this.form = new FormGroup({
       'title': new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
@@ -37,7 +43,7 @@ export class  PostCreateComponent implements OnInit {
         this.isLoading = true;
         this.postsService.getPost(this.postId).subscribe(postData => {
           this.isLoading = false;
-          this.post = {id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath};
+          this.post = {id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath, creator: postData.creator};
           this.form.setValue({'title': this.post.title, 'content': this.post.content, image: this.post.imagePath})
         });
       } else {
@@ -70,5 +76,8 @@ export class  PostCreateComponent implements OnInit {
     }
     
     this.form.reset();
+  }
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 }
