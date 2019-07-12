@@ -24,3 +24,11 @@ mat-paginator {
   width: 50%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.5)
 }
+
+.author {
+  text-align: right;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  width: fit-content;
+  float: right;
+  clear: right;
+}

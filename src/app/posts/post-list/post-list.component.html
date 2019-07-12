@@ -10,7 +10,6 @@
     <p>{{ post.content }}</p>
     <div class="author">
       Created by: <a [routerLink]="['/authors', post.creator]">{{post.name}}</a>
-      <p>{{post.creator}}</p>      
     </div>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]"><b>EDIT</b></a>
