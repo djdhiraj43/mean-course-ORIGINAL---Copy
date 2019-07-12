@@ -6,18 +6,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthorComponent } from '../authors/author.component' //Delete after testing
 
 
 @NgModule({
     declarations: [
         PostCreateComponent,
-        PostListComponent
+        PostListComponent,
+        AuthorComponent //Delete after testing
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         AngularMaterialModule,
-        RouterModule
+        RouterModule 
     ]
 })
 export class PostsModule {}

@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Fri Jul 12 2019 17:49:41 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* src/app/posts/post-list/post-list.component.html
+
+
+Created files:
+* .autogit/logs/log-12-6-2019-14-40-22.txt
+
+
+Deleted files:
+
+
+Renamed files:
