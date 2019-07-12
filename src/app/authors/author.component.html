@@ -1,0 +1,25 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<h4 class = "author" *ngIf="author">Author details are:</h4>
+<div >
+
+<p *ngIf="author">Name : {{author.name}}</p>
+<p *ngIf="author">Email : {{author.email}}</p>
+</div>
+<div class="authName"><b>Posts by {{author.name}} : </b></div> 
+
+<mat-accordion multi="true" *ngIf="authorPosts && authorPosts.length > 0 && !isLoading ">
+    <mat-expansion-panel *ngFor="let post of authorPosts">
+      <mat-expansion-panel-header>
+        {{ post.title }}
+      </mat-expansion-panel-header>
+      <div class="post-image">
+        <img [src]="post.imagePath" [alt]="post.title">
+      </div>
+      <p>{{ post.content }}</p> 
+      <p>User ID : {{ userId }}</p>   
+      <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
+        <a mat-button color="primary" [routerLink]="['/edit', post.id]"><b>EDIT</b></a>
+        <button mat-button color="warn" (click)="onDelete(post.id)"><b>DELETE</b></button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>

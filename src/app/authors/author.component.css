@@ -1,0 +1,35 @@
+:host {
+    display: block;
+    margin-top: 2rem;
+  }
+  
+  mat-spinner {
+    margin: auto;
+  }
+  
+  mat-paginator {
+    margin-top: 1rem;
+  }
+  
+  .info-text {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .post-image {
+    width: 100%
+  }
+  
+  .post-image img {
+    width: 50%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5)
+  }
+  
+  .author {
+      background: #00459425;
+  }
+
+  .authName {
+    background: #00459425;
+    margin-bottom: 1rem;
+  }

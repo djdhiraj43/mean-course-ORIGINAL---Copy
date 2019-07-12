@@ -1,9 +1,11 @@
 import { PageEvent } from '@angular/material';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { User } from '../../authors/author.model';
+
 
 
 @Component({
@@ -13,10 +15,15 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 
 export class PostListComponent implements OnInit, OnDestroy {
+  
+  private modPosts = [];
+  private modPosts_ = [];
+  author: User;
   posts: Post[] = [];
+  //mod_posts =[];
   isLoading = false;
   totalPosts = 0;
-  postsPerPage = 2;
+  postsPerPage = 5;
   currentPage=1;
   pageSizeOptions = [1,2,5,10];
   userIsAuthenticated = false;
@@ -27,6 +34,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(public postsService: PostsService, private authService: AuthService) {}
 
   ngOnInit() {
+    let c=0;
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
@@ -34,7 +42,23 @@ export class PostListComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       this.totalPosts = postData.postCount;
       this.posts = postData.posts;
+      this.modPosts = [...this.posts];
+      for(let i of this.modPosts) {
+        this.postsService.getAuthor(i.creator).subscribe(authorData => {
+          i.name = authorData.name;
+          this.modPosts_.push(i);          
+          this.isLoading = false;
+          c++;
+          if(c == this.posts.length) {
+            console.log("modPosts : "+JSON.stringify(this.modPosts_));
+          }
+          
+        })
+      };
+      
     });
+    
+
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;

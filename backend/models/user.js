@@ -4,6 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    name: {type: String, required: true},
     email: {type: String, required: true, unique: true}, //unique doent validate by querying the db but only optimizes. Hence we are using mongoose-unique-validator to validate.
     password: {type: String, required: true}
 });

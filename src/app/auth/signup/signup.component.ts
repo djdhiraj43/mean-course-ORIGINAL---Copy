@@ -27,7 +27,7 @@ onSignup(form: NgForm) {
         return;
     }
     this.isLoading = true;
-    this.authService.createUser(form.value.email, form.value.password);
+    this.authService.createUser(form.value.name, form.value.email, form.value.password);
 }
     ngOnDestroy() {
         this.authStatusSub.unsubscribe();

@@ -1,12 +1,14 @@
 import { Post } from './post.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 const BACKEND_URL = environment.apiUrl + "/posts/";
+const BACKEND_URL_AUTHORS = environment.apiUrl + "/authors/";
+const BACKEND_URL_AUTHORS_POSTS = environment.apiUrl + "/authors/posts/";
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
@@ -83,7 +85,18 @@ export class PostsService {
 
   deletePost(postId: string) {
     return this.http.delete(BACKEND_URL  + postId);;
-  }
+  };
+
+  getAuthor(authorId: string) {
+    //console.log("backend_url_authors : "+BACKEND_URL_AUTHORS+authorId);
+    return this.http.get<{ _id: string, name: string, email: string; }>(BACKEND_URL_AUTHORS + authorId);
+  };
+
+  getAuthorPosts(authorId: string) : Observable<any> {
+    //console.log("backend_url_authors : "+BACKEND_URL_AUTHORS+authorId);
+    console.log(BACKEND_URL_AUTHORS_POSTS + authorId);
+    return this.http.get<{message: string, posts: any, maxPosts: number }>(BACKEND_URL_AUTHORS_POSTS + authorId)
+  };
 
 }
 

@@ -36,16 +36,16 @@ export class AuthService {
         return this.authStatusListener.asObservable();
     }
 
-    createUser(email: string, password: string) {
-        const authData: AuthData = {email: email, password: password};
-        this.http.post(BACKEND_URL + "signup", authData).subscribe(() => {
-            this.router.navigate['/'];
+    createUser(name: string, email: string, password: string) {
+        const authData: AuthData = {name: name, email: email, password: password};
+        this.http.post(BACKEND_URL + "/signup", authData).subscribe((result) => {
+            this.router.navigate(['/']);
         }, error => {
             this.authStatusListener.next(false);
-            this.router.navigate['/signup'];
+            this.router.navigate(['/']);
         });
             
-    }
+    };
 
     login(email: string, password: string) {
         const authData: AuthData = {email: email, password: password};
