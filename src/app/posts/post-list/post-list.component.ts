@@ -47,10 +47,11 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.postsService.getAuthor(i.creator).subscribe(authorData => {
           i.name = authorData.name;
           this.modPosts_.push(i);          
-          this.isLoading = false;
+          //this.isLoading = false;
           c++;
           if(c == this.posts.length) {
             console.log("modPosts : "+JSON.stringify(this.modPosts_));
+            this.isLoading = false;
           }
           
         })

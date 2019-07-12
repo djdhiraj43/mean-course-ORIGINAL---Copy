@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Fri Jul 12 2019 19:50:40 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* src/app/comments/comments.component.html
+* src/app/comments/comments.model.ts
+
+
+Created files:
+* .autogit/logs/log-12-6-2019-19-20-32.txt
+* backend/images/mahesh's-post-1562940132921.jpg
+
+
+Deleted files:
+
+
+Renamed files:
