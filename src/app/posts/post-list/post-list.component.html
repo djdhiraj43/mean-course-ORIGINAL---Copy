@@ -11,9 +11,9 @@
     <div class="author">
       Created by: <a [routerLink]="['/authors', post.creator]">{{post.name}}</a>
     </div>
-    <div class="comments">
+    <div class="comments" *ngIf="userId">
       Comments: <a [routerLink]="['/comments', post.creator]">{{post.name}}</a>
-      AUthor : <author-details></author-details>
+      AUthor : <author-details ></author-details>
     </div>
     <author-details></author-details>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
