@@ -11,6 +11,9 @@
     <div class="author">
       Created by: <a [routerLink]="['/authors', post.creator]">{{post.name}}</a>
     </div>
+    <div class="comments">
+      Comments: <a [routerLink]="['/comments', post.creator]">{{post.name}}</a>
+    </div>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]"><b>EDIT</b></a>
       <button mat-button color="warn" (click)="onDelete(post.id)"><b>DELETE</b></button>
