@@ -1,6 +1,6 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading && posts.length == modPosts_.length">
-  <mat-expansion-panel *ngFor="let post of modPosts_">
+<mat-accordion multi="true" *ngIf="comments.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let comment of comments">
     <mat-expansion-panel-header>
       {{ post.title }}
     </mat-expansion-panel-header>
