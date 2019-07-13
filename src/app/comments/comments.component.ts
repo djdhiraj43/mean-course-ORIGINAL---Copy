@@ -7,7 +7,7 @@ import { Comment } from './comments.model';
     styleUrls: ['./comments.component.css']
 })
 
-export class implements OnInit, OnDestroy {
+export class CommentsComponent implements OnInit, OnDestroy {
     private comments: Comment[] = [];
     ngOnDestroy(): void {
         throw new Error("Method not implemented.");
