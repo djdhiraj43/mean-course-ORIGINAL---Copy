@@ -9,10 +9,11 @@ import { Comment } from './comments.model';
 
 export class CommentsComponent implements OnInit, OnDestroy {
     private comments: Comment[] = [];
-    ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
-    }
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }    
+
+    ngOnDestroy(): void {
+        throw new Error("Method not implemented.");
+    }
 }
