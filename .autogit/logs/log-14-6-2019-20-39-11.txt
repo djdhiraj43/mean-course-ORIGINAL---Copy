@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Sun Jul 14 2019 20:39:11 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-14-6-2019-20-8-20.txt
+
+
+Deleted files:
+
+
+Renamed files:
