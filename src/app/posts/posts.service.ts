@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 const BACKEND_URL = environment.apiUrl + "/posts/";
 const BACKEND_URL_AUTHORS = environment.apiUrl + "/authors/";
 const BACKEND_URL_AUTHORS_POSTS = environment.apiUrl + "/authors/posts/";
+const BACKEND_URL_COMMENTS = environment.apiUrl + "/comments/";
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
@@ -97,6 +98,19 @@ export class PostsService {
     console.log(BACKEND_URL_AUTHORS_POSTS + authorId);
     return this.http.get<{message: string, posts: any, maxPosts: number }>(BACKEND_URL_AUTHORS_POSTS + authorId)
   };
+
+  getComments(postId: string) : Observable<any> {
+    return this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
+  }
+
+  addComment(postId: string, comment: string, authorName: string) : Observable<any> {
+    const commentData = new FormData();
+    commentData.append('postId', postId);
+    const createdDate = new Date();
+    commentData.append('createdDate', createdDate)
+    
+    return this.http.post
+  }
 
 }
 
