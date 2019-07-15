@@ -5,7 +5,6 @@ import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from '../../authors/author.model';
-import { Comment } from '../comments.model';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { Comment } from '../comments.model';
 })
 
 export class PostListComponent implements OnInit, OnDestroy {
-  private comments: Comment[] = [];
+  
   private modPosts = [];
   private modPosts_ = [];
   author: User;
