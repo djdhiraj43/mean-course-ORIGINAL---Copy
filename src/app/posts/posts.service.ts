@@ -103,14 +103,25 @@ export class PostsService {
     return this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
   }
 
-  addComment(postId: string, comment: string, authorName: string) : Observable<any> {
-    const commentData = new FormData();
-    commentData.append('postId', postId);
-    const createdDate = new Date();
-    commentData.append('createdDate', createdDate)
+  /* addComment(postId: string, comment: string, authorName: string) : Observable<any> {
+    // const commentData = new FormData();
+    // commentData.append('postId', postId);
+    // const createdDate: Date = new Date();
+    // commentData. 
+    const commentData = {
+      "postId": postId,
+      "createdDate": new Date(),
+      "comment": comment,
+      "authorName": authorName,
+      "comments": []
+    }
     
-    return this.http.post
-  }
+    return this.http.post<any>(BACKEND_URL_COMMENTS + postId, commentData)
+    .subscribe(() => {
+      //this.router.navigate(["/"]);
+    })
+
+  }  */
 
 }
 
