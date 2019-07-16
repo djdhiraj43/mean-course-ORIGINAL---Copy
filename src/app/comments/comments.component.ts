@@ -3,6 +3,7 @@ import { Comment } from './comments.model';
 import { PostsService } from '../posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 
 @Component({
     selector: 'post-comments',
@@ -29,6 +30,13 @@ export class CommentsComponent implements OnInit {
         
     }    
 
+    onAddComment(form: NgForm) {
+        if(form.invalid) {
+            return;
+        }
+        this.isLoading = true;
+        this.postsService
+    }
     /*ngOnDestroy(): void {
         throw new Error("Method not implemented.");
     }*/

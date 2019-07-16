@@ -13,5 +13,13 @@
     -->
   </mat-expansion-panel>
 </mat-accordion>
-<textarea class="comment" name="comment" cols="40" rows="3"></textarea>
+
+<form [formGroup]='form' (submit)="onAddComment(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
+  <mat-form-field>
+    <input matInput name="comment" ngModel placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
+    <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Comment</button>
+</form>
+
 <p class="info-text mat-body-1" *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>

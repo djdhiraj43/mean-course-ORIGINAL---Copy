@@ -105,7 +105,7 @@ export class PostsService {
     
   }
 
-  /* addComment(postId: string, comment: string, authorName: string) : Observable<any> {
+  addComment(postId: string, comment: string, authorName: string) {
     // const commentData = new FormData();
     // commentData.append('postId', postId);
     // const createdDate: Date = new Date();
@@ -118,12 +118,12 @@ export class PostsService {
       "comments": []
     }
     
-    return this.http.post<any>(BACKEND_URL_COMMENTS + postId, commentData)
+    this.http.post(BACKEND_URL_COMMENTS + postId, commentData)
     .subscribe(() => {
-      //this.router.navigate(["/"]);
+      this.router.navigate(["/"]);
     })
 
-  }  */
+  } 
 
 }
 
