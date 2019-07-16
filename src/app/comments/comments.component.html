@@ -14,7 +14,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<form [formGroup]='form' (submit)="onAddComment(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
+<form (submit)="onAddComment(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
   <mat-form-field>
     <input matInput name="comment" ngModel placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
     <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>

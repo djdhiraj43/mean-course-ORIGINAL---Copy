@@ -111,6 +111,7 @@ export class PostsService {
     this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
     .subscribe(commentsData => {
       this.comments = commentsData.comments;
+      console.log("Comments from posts service : "+ JSON.stringify(commentsData.comments));
       this.commentsUpdated.next({comments: [...this.comments], commentsCount: commentsData.maxComments});
     })
     

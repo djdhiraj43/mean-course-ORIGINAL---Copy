@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 
 exports.getComments = (req, res, next) => {
     const postId = mongoose.Types.ObjectId(req.params.postId);
+    console.log("ObjectId type: "+typeof(postId));
     const postQuery = Comment.find({"postId": postId});
     let fetchedComments;
     postQuery.then(comments => {
       fetchedComments = comments;
+      console.log("Fetched Comments : "+comments);
       return Comment.count();
     })
     .then(count => {
