@@ -16,7 +16,7 @@
 
 <form (submit)="onAddComment(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
   <mat-form-field>
-    <input matInput name="comment" ngModel placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
+    <input matInput name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
     <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>
   </mat-form-field>
   <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Comment</button>
