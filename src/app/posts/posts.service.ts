@@ -131,8 +131,12 @@ export class PostsService {
     }
     
     this.http.post<{message: string, comment: Comment}>(BACKEND_URL_COMMENTS + postId, commentData)
-    .subscribe(() => {
-      this.router.navigate(["/api/comments/"+postId]);
+    .subscribe((cmtData) => {
+      var up_comments = [...this.comments];
+      up_comments.push(cmtData.comment);
+      this.comments = up_comments;
+      this.commentsUpdated.next({comments:})
+      //this.router.navigate(["/comments/"+postId]);
     })
 
   } 
