@@ -10,10 +10,10 @@ import { AuthService } from '../auth/auth.service';
     styleUrls: ['./comments.component.css']
 })
 
-export class CommentsComponent implements OnInit, OnDestroy {
+export class CommentsComponent implements OnInit {
     postId: string;
     isLoading = true;
-    private comments: Comment[] = [];
+    public comments: Comment[] = [];
     constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {};
     ngOnInit(): void {
         this.isLoading = true;
@@ -23,12 +23,13 @@ export class CommentsComponent implements OnInit, OnDestroy {
         });
         this.postsService.getComments(this.postId).subscribe(commentsData => {
             this.comments = commentsData.comments;
+            console.log("Comments : "+this.comments);
             this.isLoading = false;
         })
         
     }    
 
-    ngOnDestroy(): void {
+    /*ngOnDestroy(): void {
         throw new Error("Method not implemented.");
-    }
+    }*/
 }

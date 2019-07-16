@@ -1,10 +1,10 @@
 const Comment = require('../models/comment');
 
 exports.getComments = (req, res, next) => {
-    const postQuery = Comment.find();
+    const postQuery = Comment.find({"_id": req.params.postId});
     let fetchedComments;
     postQuery.then(comments => {
-      fetchedPosts = comments;
+      fetchedComments = comments;
       return Comment.count();
     })
     .then(count => {

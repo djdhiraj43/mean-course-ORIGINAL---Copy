@@ -100,7 +100,9 @@ export class PostsService {
   };
 
   getComments(postId: string) : Observable<any> {
-    return this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
+    console.log("url : " + BACKEND_URL_COMMENTS + postId);
+    return this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId);
+    
   }
 
   /* addComment(postId: string, comment: string, authorName: string) : Observable<any> {
