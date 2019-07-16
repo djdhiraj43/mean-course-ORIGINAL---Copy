@@ -49,7 +49,7 @@ export class CommentsComponent implements OnInit {
         this.isLoading = true;
         this.postsService.getPost(this.postId).subscribe(post => {
            this.postsService.getAuthor(post.creator).subscribe(author => {
-            this.postsService.addComment(this.postId, form.value.comment, author.name).subscribe()
+            this.postsService.addComment(this.postId, form.value.comment, author.name);
            }) 
         });
         

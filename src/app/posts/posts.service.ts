@@ -135,7 +135,7 @@ export class PostsService {
       var up_comments = [...this.comments];
       up_comments.push(cmtData.comment);
       this.comments = up_comments;
-      this.commentsUpdated.next({comments:})
+      this.commentsUpdated.next({comments: [...this.comments], commentsCount: this.comments.length});
       //this.router.navigate(["/comments/"+postId]);
     })
 
