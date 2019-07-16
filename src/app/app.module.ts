@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { AuthorModule } from './authors/author.module'
+import { CommentsModule } from './comments/comments.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AuthorModule } from './authors/author.module'
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
-    AuthorModule
+    AuthorModule,
+    CommentsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},

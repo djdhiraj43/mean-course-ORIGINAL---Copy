@@ -5,7 +5,7 @@
 <p *ngIf="author">Name : {{author.name}}</p>
 <p *ngIf="author">Email : {{author.email}}</p>
 </div>
-<div class="authName"><b>Posts by {{author.name}} : </b></div> 
+<div class="authName" *ngIf="author"><b>Posts by {{author.name}} : </b></div> 
 
 <mat-accordion multi="true" *ngIf="authorPosts && authorPosts.length > 0 && !isLoading ">
     <mat-expansion-panel *ngFor="let post of authorPosts">
