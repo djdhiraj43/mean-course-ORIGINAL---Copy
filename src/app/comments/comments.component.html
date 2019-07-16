@@ -14,6 +14,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
+<mat-card>
 <form (submit)="onAddComment(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
   <mat-form-field>
     <input matInput name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
@@ -21,5 +22,5 @@
   </mat-form-field>
   <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Comment</button>
 </form>
-
+</mat-card>
 <p class="info-text mat-body-1" *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
