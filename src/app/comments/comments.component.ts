@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'post-comments',
@@ -16,6 +17,9 @@ export class CommentsComponent implements OnInit {
     postId: string;
     isLoading = true;
     public comments: Comment[] = [];
+    userIsAuthenticated = false;
+    userId: string; //
+    private authStatusSub: Subscription; //
     constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {};
     ngOnInit(): void {
         this.isLoading = true;
@@ -29,6 +33,12 @@ export class CommentsComponent implements OnInit {
             console.log("Comments : "+this.comments);
             this.isLoading = false;
         })
+
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+    });
         
     }    
 
@@ -37,7 +47,8 @@ export class CommentsComponent implements OnInit {
             return;
         }
         this.isLoading = true;
-        this.postsService
+        this.postsService.getAuthor()
+        this.postsService.addComment(this.postId, form.value.comment, )
     }
     /*ngOnDestroy(): void {
         throw new Error("Method not implemented.");

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
-    postId: { type: String, required: true },
+    postId: { type: mongoose.Schema.Types.ObjectId, required: true },
     createdDate: { type: Date, required: true },
     comment: { type: String, required: true },
     authorName: { type: String, required: true },

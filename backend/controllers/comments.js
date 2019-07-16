@@ -8,7 +8,7 @@ exports.getComments = (req, res, next) => {
     let fetchedComments;
     postQuery.then(comments => {
       fetchedComments = comments;
-      console.log("Fetched Comments : "+comments);
+      console.log("Fetched Comments : "+fetchedComments);
       return Comment.count();
     })
     .then(count => {
