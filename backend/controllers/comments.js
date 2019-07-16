@@ -10,8 +10,8 @@ exports.getComments = (req, res, next) => {
     .then(count => {
       res.status(200).json({
         message: "Comments fetched successfully",
-        posts: fetchedComments,
-        maxPosts: count
+        comments: fetchedComments,
+        maxComments: count
       })
     })
     .catch(error => {

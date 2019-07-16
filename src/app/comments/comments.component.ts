@@ -21,6 +21,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
           this.postId = paramMap.get('postId');
           //this.isLoading = false;
         });
+        this.postsService.getComments(this.postId).subscribe(commentsData => {
+            this.comments = commentsData.comments;
+            this.isLoading = false;
+        })
         
     }    
 
