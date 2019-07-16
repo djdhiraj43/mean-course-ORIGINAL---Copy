@@ -1,7 +1,9 @@
 const Comment = require('../models/comment');
+const mongoose = require('mongoose');
 
 exports.getComments = (req, res, next) => {
-    const postQuery = Comment.find({"_id": req.params.postId});
+    const post_id = mongoose.Types.ObjectId(req.params.postId);
+    const postQuery = Comment.find({"post_id": post_id});
     let fetchedComments;
     postQuery.then(comments => {
       fetchedComments = comments;
