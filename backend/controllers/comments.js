@@ -2,8 +2,8 @@ const Comment = require('../models/comment');
 const mongoose = require('mongoose');
 
 exports.getComments = (req, res, next) => {
-    const post_id = mongoose.Types.ObjectId(req.params.postId);
-    const postQuery = Comment.find({"postId": post_id});
+    const postId = mongoose.Types.ObjectId(req.params.postId);
+    const postQuery = Comment.find({"postId": postId});
     let fetchedComments;
     postQuery.then(comments => {
       fetchedComments = comments;
@@ -22,3 +22,32 @@ exports.getComments = (req, res, next) => {
       })
     });
   };
+
+  exports.postComment = (req, res, next) => {
+
+    const comment = new Comment({
+      postId: req.body.postId,
+      createdDate: req.body.createdDate,
+      comment: req.body.comment,
+      authorName: req.body.authorName,
+      comments: req.body.comments
+    });
+
+    comment.save().then(createdComment => {
+      res.status(201).json({
+        message:"Comment added successfully",
+        comment: {
+          postId: createdComment.postId,
+          createdDate: createdComment.createdDate,
+          comment: createdComment.comment,
+          authorName: createdComment.authorName,
+          comments: createdComment.comments
+        }
+      });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Creating a comment failed!"
+      })
+    });
+  }

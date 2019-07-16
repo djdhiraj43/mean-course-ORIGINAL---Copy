@@ -1,4 +1,5 @@
 import { Post } from './post.model';
+import { Comment } from '../comments/comments.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
@@ -15,6 +16,7 @@ const BACKEND_URL_COMMENTS = environment.apiUrl + "/comments/";
 export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<{posts:Post[], postCount: number}>();
+  private commentsUpdated = new Subject<{comments:Comment[], commentsCount: number}>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -118,9 +120,9 @@ export class PostsService {
       "comments": []
     }
     
-    this.http.post(BACKEND_URL_COMMENTS + postId, commentData)
+    this.http.post<{message: string, comment: Comment}>(BACKEND_URL_COMMENTS + postId, commentData)
     .subscribe(() => {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/api/comments/"+postId]);
     })
 
   } 

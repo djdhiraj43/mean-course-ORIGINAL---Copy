@@ -8,6 +8,8 @@ const router = express.Router();
   
   
   router.get("/:postId", CommentsController.getComments);
+
+  router.post("/postId", CommentsController.postComment);
   
 
   module.exports = router;
