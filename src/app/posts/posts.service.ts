@@ -15,6 +15,7 @@ const BACKEND_URL_COMMENTS = environment.apiUrl + "/comments/";
 @Injectable({providedIn: 'root'})
 export class PostsService {
   private posts: Post[] = [];
+  private comments: Comment[] = [];
   private postsUpdated = new Subject<{posts:Post[], postCount: number}>();
   private commentsUpdated = new Subject<{comments:Comment[], commentsCount: number}>();
 
@@ -44,6 +45,10 @@ export class PostsService {
 
   getPostUpdateListener() {
     return this.postsUpdated.asObservable();
+  }
+
+  getCommentsUpdateListener() {
+    return this.commentsUpdated.asObservable();
   }
 
   getPost(id: string) {
@@ -101,9 +106,13 @@ export class PostsService {
     return this.http.get<{message: string, posts: any, maxPosts: number }>(BACKEND_URL_AUTHORS_POSTS + authorId)
   };
 
-  getComments(postId: string) : Observable<any> {
+  getComments(postId: string) {
     console.log("url : " + BACKEND_URL_COMMENTS + postId);
-    return this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId);
+    this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
+    .subscribe(commentsData => {
+      this.comments = commentsData.comments;
+      this.commentsUpdated.next({comments: [...this.comments], commentsCount: commentsData.maxComments});
+    })
     
   }
 

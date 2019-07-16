@@ -4,6 +4,7 @@ import { PostsService } from '../posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'post-comments',
@@ -22,7 +23,8 @@ export class CommentsComponent implements OnInit {
           this.postId = paramMap.get('postId');
           //this.isLoading = false;
         });
-        this.postsService.getComments(this.postId).subscribe(commentsData => {
+        this.postsService.getComments(this.postId);
+        this.postsService.getCommentsUpdateListener().subscribe(commentsData => {
             this.comments = commentsData.comments;
             console.log("Comments : "+this.comments);
             this.isLoading = false;
