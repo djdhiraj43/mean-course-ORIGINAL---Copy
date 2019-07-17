@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
         AngularMaterialModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        MatListModule
     ]
 })
 export class CommentsModule {}

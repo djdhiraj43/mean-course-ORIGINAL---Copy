@@ -3,3 +3,7 @@
     box-align: right;
     align-self: center    
 }
+
+.author {
+    align-self: auto;
+}
