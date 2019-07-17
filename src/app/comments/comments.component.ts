@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import { Subscription } from 'rxjs';
+import { Post } from '../posts/post.model';
 
 @Component({
     selector: 'post-comments',
@@ -15,6 +16,7 @@ import { Subscription } from 'rxjs';
 })
 
 export class CommentsComponent implements OnInit {
+    post: any;
     postId: string;
     isLoading = true;
     public comments: Comment[] = [];
@@ -31,14 +33,17 @@ export class CommentsComponent implements OnInit {
         this.postsService.getComments(this.postId);
         this.postsService.getCommentsUpdateListener().subscribe(commentsData => {
             this.comments = commentsData.comments;
-            console.log("Comments : "+this.comments);
+            this.post = this.postsService.getPost(this.postId);
+            console.log("Post : "+JSON.stringify(this.post));
             this.isLoading = false;
+            
         })
 
         this.userIsAuthenticated = this.authService.getIsAuth();
         this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
+        this.isLoading = false;
     });
         
     }    

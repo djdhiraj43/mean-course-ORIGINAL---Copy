@@ -1,7 +1,7 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-<mat-accordion>
-  <h1></h1>
+<mat-accordion *ngIf="post">
+  <h1 class="title"> {{post.title}} </h1>
   <div class="post-image">
     <img [src]="post.imagePath" [alt]="post.title">
   </div>
