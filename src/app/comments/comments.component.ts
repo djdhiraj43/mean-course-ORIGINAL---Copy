@@ -16,8 +16,9 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
+    postAuthor: string;
     post: any;
-    postId: string;
+    postId: any;
     isLoading = true;
     public comments: Comment[] = [];
     userIsAuthenticated = false;
@@ -34,6 +35,12 @@ export class CommentsComponent implements OnInit {
         this.postsService.getCommentsUpdateListener().subscribe(commentsData => {
             this.comments = commentsData.comments;
             this.post = this.postsService.getPost(this.postId);
+            if(this.post != undefined) {
+                this.postsService.getAuthor(this.post.creator).subscribe(author => {
+                    this.postAuthor = author.name;
+                })
+            }
+            
             console.log("Post : "+JSON.stringify(this.post));
             this.isLoading = false;
             
