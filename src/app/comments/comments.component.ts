@@ -42,22 +42,18 @@ export class CommentsComponent implements OnInit {
         
     }    
 
-    onAddComment(comment, form) {
+    onAddComment(comment: any, form) {
         if(form.invalid) {
             return;
         }
         this.isLoading = true;
 
-        this.postsService.getPost(this.postId).subscribe(post => {
-           this.postsService.getAuthor(post.creator).subscribe(author => {
+           this.postsService.getAuthor(this.authService.getUserId()).subscribe(author => {
                console.log("form : "+JSON.stringify(form));
             this.postsService.addComment(this.postId, comment, author.name);
-           }) 
-        });
-
-              
+           })             
     }
-    /*ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
-    }*/
+    ngOnDestroy(): void {
+        this.authStatusSub.unsubscribe();
+    }
 }
