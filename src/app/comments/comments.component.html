@@ -15,18 +15,11 @@
   </mat-expansion-panel>
 </mat-accordion>
 -->
-<script>
-  
-  function convertDate(dt) {
-    var dt_ = dt.toLocaleDateString("en-US", {day: "numeric", month: "long", year: "numeric"});
-    document.getElementById("cmt").innerHTML = dt_;
-  }
-</script>
 
 <mat-list>
   <mat-list-item *ngFor="let comment of comments">
       <p mat-line class="comment">  {{comment.comment}}  </p>
-      <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <script></script> </p>
+      <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="4">{{comment.createdDate}}</font></p>  
   </mat-list-item>
 </mat-list>
 
