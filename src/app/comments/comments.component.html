@@ -17,9 +17,9 @@
 -->
 
 <mat-list>
-  <mat-list-item *ngFor="let comment of comments">
-    {{comment.comment}}
-      <mat-list-item class="author">{{comment.authorName}}</mat-list-item>
+  <mat-list-item class="comment" *ngFor="let comment of comments">
+      <p mat-line>  {{comment.comment}}  </p>
+      &nbsp;&nbsp;&nbsp;&nbsp;<p mat-line> {{comment.authorName}} </p>
   </mat-list-item>
 </mat-list>
 
