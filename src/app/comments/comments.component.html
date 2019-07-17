@@ -15,12 +15,12 @@
 </mat-accordion>
 
 <mat-card>
-<form *ngIf="!isLoading" #commentForm="ngForm"> 
-  <mat-form-field *ngIf="userIsAuthenticated">
+<form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
+  <mat-form-field >
     <input matInput #comment name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
     <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>
   </mat-form-field>
-  <button mat-raised-button color="accent" type="button" *ngIf="userIsAuthenticated" (click)="onAddComment(comment.value, commentForm)">Comment</button>
+  <button mat-raised-button color="accent" type="button"  (click)="onAddComment(comment.value, commentForm)">Comment</button>
 </form>
 </mat-card>
 <p class="info-text mat-body-1" *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
