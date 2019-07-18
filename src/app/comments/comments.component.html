@@ -9,6 +9,7 @@
   <div class="author">
     Created by: <a [routerLink]="['/authors', post.creator]">{{postAuthor}}</a>
   </div>
+  <br>
 </mat-accordion>
 
 <mat-list>
@@ -16,10 +17,12 @@
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
       <br>  
-      <div>
+      <!--<div>
+          <br>
       <input matInput #comment name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
+          <br>
       <button mat-raised-button color="primary" type="button"  (click)="onAddComment(comment.value, commentForm)"> Comment</button>
-    </div>
+    </div> -->
 
   </mat-list-item>
 </mat-list>
