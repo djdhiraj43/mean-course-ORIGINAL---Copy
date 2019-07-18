@@ -34,17 +34,13 @@ export class CommentsComponent implements OnInit {
         this.postsService.getComments(this.postId);
         this.postsService.getCommentsUpdateListener().subscribe(commentsData => {
             this.comments = commentsData.comments;
-            this.post = this.postsService.getPost(this.postId);
-            console.log(this.post);
-            /*if(this.post != undefined) {
-                this.postsService.getAuthor(this.post.creator).subscribe(author => {
+            this.post = this.postsService.getPost(this.postId).subscribe(postData => {
+                this.post = postData;
+                this.postsService.getAuthor(postData.creator).subscribe(author => {
                     this.postAuthor = author.name;
+                    this.isLoading = false;
                 })
-            }*/
-            
-            console.log("Post : "+JSON.stringify(this.post));
-            this.isLoading = false;
-            
+            })
         })
 
         this.userIsAuthenticated = this.authService.getIsAuth();
