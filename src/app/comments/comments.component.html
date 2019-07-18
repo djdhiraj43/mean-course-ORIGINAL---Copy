@@ -14,7 +14,8 @@
 <mat-list>
   <mat-list-item *ngFor="let comment of comments">
       <p mat-line class="comment">  {{comment.comment}}  </p>
-      <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p>  
+      <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
+      <br>  
   </mat-list-item>
 </mat-list>
 
@@ -27,5 +28,5 @@
   <button mat-raised-button color="accent" type="button"  (click)="onAddComment(comment.value, commentForm)">Comment</button>
 </form>
 </mat-card>
-<p class="info-text mat-body-1" *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
+<p *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
 <p *ngIf="!userIsAuthenticated">Please login to add a comment.</p>
