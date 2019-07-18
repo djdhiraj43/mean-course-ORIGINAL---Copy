@@ -16,6 +16,11 @@
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
       <br>  
+      <div>
+      <input matInput #comment name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
+      <button mat-raised-button color="primary" type="button"  (click)="onAddComment(comment.value, commentForm)"> Comment</button>
+    </div>
+
   </mat-list-item>
 </mat-list>
 
