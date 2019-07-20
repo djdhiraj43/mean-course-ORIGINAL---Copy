@@ -1,3 +1,14 @@
+<script>
+  function myFunction() {
+    var x = document.getElementById("cmt_btn");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  </script>
+
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
 <mat-accordion *ngIf="post && postAuthor">
@@ -27,16 +38,6 @@
 
   </mat-list-item>
 </mat-list>
-<script>
-  function myFunction() {
-    var x = document.getElementById("cmt_btn");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-  </script>
 
 <mat-card>
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
