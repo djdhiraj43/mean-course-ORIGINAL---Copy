@@ -17,15 +17,26 @@
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
       <br>  
-      <div>
+      <button onclick="myFunction()">Try it</button>
+      <div id="cmt_btn">
           <br>
-      <input matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
+        <input matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
           <br>
-      <button mat-raised-button color="primary" type="button"  (click)="onAddComment(comment_.value, commentForm)"> Comment</button>
-    </div>
+        <button mat-raised-button color="primary" type="button"  (click)="onAddComment(comment_.value, commentForm)"> Comment</button>
+      </div>
 
   </mat-list-item>
 </mat-list>
+<script>
+  function myFunction() {
+    var x = document.getElementById("cmt_btn");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  </script>
 
 <mat-card>
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
