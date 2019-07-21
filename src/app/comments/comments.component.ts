@@ -58,13 +58,13 @@ export class CommentsComponent implements OnInit {
         //this.show = !this.show;
         var target = event.target;
         var id = target.parentNode.attributes.id.nodeValue;
-        var x = document.getElementById(id).childNodes;
-        console.log("length : "+JSON.stringify(x));
-        /*if (x.style.display === "none") {
+        var x = document.getElementById(id+"c1");
+        console.log("x : "+x);
+        if (x.style.display === "none") {
             x.style.display = "block";
           } else {
             x.style.display = "none";
-          }*/
+          }
     }
 
     onAddComment(comment: any, form) {
