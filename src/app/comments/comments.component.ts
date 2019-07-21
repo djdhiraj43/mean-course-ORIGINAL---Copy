@@ -54,8 +54,9 @@ export class CommentsComponent implements OnInit {
         
     }    
 
-    toggle() {
+    toggle(id) {
         this.show = !this.show;
+        console.log("ID : "+id);
     }
 
     onAddComment(comment: any, form) {

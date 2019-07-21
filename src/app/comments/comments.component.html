@@ -26,11 +26,11 @@
 </mat-accordion>
 
 <mat-list>
-  <mat-list-item *ngFor="let comment of comments">
+  <mat-list-item *ngFor="let comment of comments; let i = index">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
       <br>  
-      <button (click)="toggle()" id="bt">Try it</button>
+      <button (click)="toggle($event)" id="{{'bt'+i}}">Try it {{id}}</button>
       <div id="cmt_btn" *ngIf="show">
           <br>
         <input matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
