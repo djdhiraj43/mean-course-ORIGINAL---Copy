@@ -16,6 +16,7 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
+    public show: boolean = false;
     postAuthor: string;
     post: any;
     postId: any;
@@ -26,6 +27,7 @@ export class CommentsComponent implements OnInit {
     private authStatusSub: Subscription; //
     constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {};
     ngOnInit(): void {
+
         this.isLoading = true;
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
           this.postId = paramMap.get('postId');
@@ -51,6 +53,10 @@ export class CommentsComponent implements OnInit {
     });
         
     }    
+
+    toggle() {
+        this.show = !this.show;
+    }
 
     onAddComment(comment: any, form) {
         if(form.invalid) {
