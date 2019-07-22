@@ -31,8 +31,8 @@
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
       <br>  
       
-      <div id="cmt_btn" id="{{i}}">
-          <button (click)="toggle($event)" >Try it</button>
+      <div id="{{i}}">
+          <button (click)="toggle($event)" >  </button>
           <br>
         <input id="{{i+'c1'}}" matInput style="display: none" #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
           <br>
