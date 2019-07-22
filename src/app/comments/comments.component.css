@@ -32,3 +32,10 @@
     float: right;
     clear: right;
   }
+
+  .btn {
+    padding: 0;
+    border: none;
+    background: node;
+  }
+
