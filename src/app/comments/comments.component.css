@@ -3,6 +3,12 @@
     margin-top: 2rem;
   }
   
+  ::ng-deep .mat-list .mat-list-item .mat-line{
+    word-wrap: break-word;
+   white-space: pre-wrap;
+   line-break: normal;
+}
+
   mat-spinner {
     margin: auto;
   }
@@ -41,10 +47,21 @@
     padding: 0;
     border: none;
     background: 8px;
+    float: left;
   }
 
   .cmt_ {
     text-align: left;
     float: left;
     clear: left;
+    font: 2;
+  }
+
+  .ic {
+    display: none;
+    float: left;
+  }
+
+  .ml {
+    color:slategrey;
   }
