@@ -3,12 +3,6 @@
     margin-top: 2rem;
   }
   
-  ::ng-deep .mat-list .mat-list-item .mat-line{
-    word-wrap: break-word;
-   white-space: pre-wrap;
-   line-break: normal;
-}
-
   mat-spinner {
     margin: auto;
   }
