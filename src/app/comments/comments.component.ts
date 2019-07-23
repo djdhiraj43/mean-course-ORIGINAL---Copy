@@ -58,8 +58,8 @@ export class CommentsComponent implements OnInit {
         //this.show = !this.show;
         var target = event.target;
         var id = target.parentNode.attributes.id.nodeValue;
-        document.getElementById(id+"c1").style.display = "block";
-        document.getElementById(id+"c2").style.display = "block";
+        document.getElementById(id+"c1").style.display = "inline-block";
+        document.getElementById(id+"c2").style.display = "inline-block";
     }
 
     onAddComment(comment: any, form) {
