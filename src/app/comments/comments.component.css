@@ -10,12 +10,7 @@
   mat-paginator {
     margin-top: 1rem;
   }
-  
-  .info-text {
-    text-align: center;
-    font-weight: bold;
-  }
-  
+    
   .post-image {
     width: 100%
   }
@@ -46,4 +41,10 @@
     padding: 0;
     border: none;
     background: 8px;
+  }
+
+  .cmt_ {
+    text-align: left;
+    float: left;
+    clear: left;
   }

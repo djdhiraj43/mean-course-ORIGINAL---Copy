@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jul 23 2019 17:24:06 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* src/app/comments/comments.component.css
+* src/app/comments/comments.component.html
+* src/app/comments/comments.component.ts
+
+
+Created files:
+* .autogit/logs/log-23-6-2019-15-43-39.txt
+
+
+Deleted files:
+
+
+Renamed files:
