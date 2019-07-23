@@ -17,13 +17,13 @@
   <mat-list-item *ngFor="let comment of comments; let i = index">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <br> <p mat-line id="cmt" style="color:slategrey">--------{{comment.authorName}}, <font size="2">{{comment.createdDate}}</font></p> 
-      <br>  
+       <br>
       
-      <div class="cmt_" id="{{i}}" style="text-align: center">
-          <button class="btn" (click)="toggle($event)" > &#x270d; </button>
+      <div class="cmt_" id="{{i}}" >
+          <button style="align-self: " class="btn" id="{{i+'b1'}}" (click)="toggle($event)" > &#x270d; </button>
           <br>
         <input id="{{i+'c1'}}" matInput style="display: none" #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
-          <br>
+          
         <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment(comment_.value, commentForm)"> Comment</button>
       </div>
 

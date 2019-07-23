@@ -34,8 +34,8 @@
   }
 
   .acb {
-    padding: 0 5px 5px 5px;
-    line-height: 13px;
+    padding: 0 4px 5px 5px;
+    line-height: 10px;
     text-align: center;
     display: none;
     vertical-align: middle;
@@ -47,4 +47,3 @@
     border: none;
     background: 8px;
   }
-
