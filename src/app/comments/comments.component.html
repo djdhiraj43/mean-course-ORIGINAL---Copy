@@ -13,7 +13,7 @@
   <br>
 </mat-accordion>
 
-<mat-list>
+<mat-list class="list">
   <mat-list-item *ngFor="let comment of comments; let i = index" class="cmt_">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <p mat-line class="ml" id="cmt">--------{{comment.authorName}}, {{comment.createdDate}} </p>
@@ -28,7 +28,6 @@
   </mat-list-item>
 </mat-list>
 
-<mat-card>
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
     <div>
   <mat-form-field >
@@ -39,6 +38,5 @@
   <button mat-raised-button color="accent" type="button"  (click)="onAddComment(comment.value, commentForm)">Comment</button>
   </div>
 </form>
-</mat-card>
 <p *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
 <p *ngIf="!userIsAuthenticated">Please login to add a comment.</p>

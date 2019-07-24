@@ -61,4 +61,7 @@
     color:slategrey;
   }
 
-  
+  .mat-card {
+    height: 10px !important;
+    vertical-align: bottom !important;
+  }
