@@ -61,7 +61,7 @@ export class CommentsComponent implements OnInit {
         console.log("id : "+id);
         document.getElementById(id+"c1").style.display = "inline-block";
         document.getElementById(id+"c2").style.display = "inline-block";
-        //document.getElementById(id).style.display = "none";
+        document.getElementById(id).style.display = "none";
     }
 
     onAddComment(comment: any, form) {

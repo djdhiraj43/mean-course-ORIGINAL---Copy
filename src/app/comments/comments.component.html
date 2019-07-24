@@ -17,21 +17,17 @@
   <mat-list-item *ngFor="let comment of comments; let i = index" class="cmt_">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <p mat-line class="ml" id="cmt">--------{{comment.authorName}}, {{comment.createdDate}} </p>
-        <br/>
-          
-          <button class="btn" id="{{i}}" (click)="toggle($event)" > &#x270d; </button>
-          <br>
-        <input id="{{i+'c1'}}" class="ic" matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
-          
-        <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment(comment_.value, commentForm)"> Comment</button>
-
+      <mat-divider></mat-divider>
+      <button class="btn" id="{{i}}" (click)="toggle($event)" > &#x270d; </button>
+      <input id="{{i+'c1'}}" class="ic" matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
+      <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment(comment_.value, commentForm)"> Comment</button>
   </mat-list-item>
 </mat-list>
 
+
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
     <div>
-  <mat-form-field >
-    
+  <mat-form-field >    
     <input matInput #comment name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
     <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>
   </mat-form-field>

@@ -33,7 +33,6 @@
     float: left;
     clear: left;
     font: 2;
-    justify-content: flex-end;
   }
 
   .acb {
@@ -49,10 +48,11 @@
     padding: 0;
     border: none;
     background: 8px;
-    float: right;
+    float: left;
   }
 
   .ic {
+    width: 15%;
     display: none;
     float: left;
   }
@@ -61,7 +61,6 @@
     color:slategrey;
   }
 
-  .mat-card {
-    height: 10px !important;
-    vertical-align: bottom !important;
+  .btn .ic .acb {
+    float: left !important;
   }
