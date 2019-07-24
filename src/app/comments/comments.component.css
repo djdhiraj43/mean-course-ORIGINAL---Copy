@@ -44,13 +44,6 @@
     float: left;
   }
 
-  .cmt_ {
-    text-align: left;
-    float: left;
-    clear: left;
-    font: 2;
-  }
-
   .ic {
     display: none;
     float: left;
@@ -58,4 +51,13 @@
 
   .ml {
     color:slategrey;
+  }
+
+  
+  .cmt_ {
+    text-align: left;
+    float: left;
+    clear: left;
+    font: 2;
+    justify-content: flex-end;
   }
