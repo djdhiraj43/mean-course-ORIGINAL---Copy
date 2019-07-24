@@ -28,6 +28,14 @@
     clear: right;
   }
 
+  .cmt_ {
+    text-align: left;
+    float: left;
+    clear: left;
+    font: 2;
+    justify-content: flex-end;
+  }
+
   .acb {
     padding: 0 4px 5px 5px;
     line-height: 10px;
@@ -54,10 +62,3 @@
   }
 
   
-  .cmt_ {
-    text-align: left;
-    float: left;
-    clear: left;
-    font: 2;
-    justify-content: flex-end;
-  }
