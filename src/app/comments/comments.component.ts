@@ -58,6 +58,7 @@ export class CommentsComponent implements OnInit {
         //this.show = !this.show;
         var target = event.target;
         var id = target.parentNode.attributes.id.nodeValue;
+        console.log("id : "+id);
         document.getElementById(id+"c1").style.display = "inline-block";
         document.getElementById(id+"c2").style.display = "inline-block";
         document.getElementById(id+"b1").style.display = "none";
