@@ -30,11 +30,14 @@
 
 <mat-card>
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
+    <div>
   <mat-form-field >
+    
     <input matInput #comment name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
     <mat-error *ngIf="nameInput.invalid">Please enter a valid comment.</mat-error>
   </mat-form-field>
   <button mat-raised-button color="accent" type="button"  (click)="onAddComment(comment.value, commentForm)">Comment</button>
+  </div>
 </form>
 </mat-card>
 <p *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
