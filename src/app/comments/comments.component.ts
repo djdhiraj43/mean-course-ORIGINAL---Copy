@@ -16,6 +16,7 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
+    public level: number = 0;
     public show: boolean = false;
     postAuthor: string;
     post: any;
