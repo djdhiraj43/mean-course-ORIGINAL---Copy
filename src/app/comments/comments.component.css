@@ -52,6 +52,7 @@
   }
 
   .ic {
+    border: 1px solid slategray; 
     width: 15%;
     display: none;
     float: left;
