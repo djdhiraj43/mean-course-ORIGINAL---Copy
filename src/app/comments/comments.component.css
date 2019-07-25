@@ -53,13 +53,14 @@
 
   .ic {
     border: 1px solid slategray; 
-    width: 15%;
+    width: 20%;
     display: none;
     float: left;
   }
 
   .ml {
     color:slategrey;
+    padding-bottom: 2px;
   }
 
   .btn .ic .acb {
