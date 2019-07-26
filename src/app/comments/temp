@@ -1,8 +1,12 @@
-var depthCount = function (branch) {
-    if(!branch.comments) {
-        return 1;
+getDepth = function(obj) {
+    var depth = 0;
+    if (obj.comments) {
+        obj.comments.forEach(function (d) {
+            var tmpDepth = getDepth(d)
+            if (tmpDepth > depth) {
+                depth = tmpDepth
+            }
+        })
     }
-    return branch.comments.reduce(function (c, b) {
-        return c + depthCount(b);
-    }, 0)
+    return 1 + depth
 }
