@@ -13,16 +13,17 @@
   <br>
 </mat-accordion>
 
+<form  #form="ngForm">
 <mat-list class="list">
   <mat-list-item *ngFor="let comment of comments; let i = index" class="cmt_">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <p mat-line class="ml" id="cmt">--------{{comment.authorName}}, {{comment.createdDate}} <br>
         <button class="btn" id="{{i}}" (click)="toggle($event)" > &#x270d; </button> 
         <input id="{{i+'c1'}}" class="ic" matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
-        <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment1(comment_.value,  comment.replyId || comment._id)"> Comment</button></p>
+        <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment_({'comment' :comment_.value, 'replyId': comment.replyId || comment._id, 'level': comment.level || 1}, form)"> Comment</button></p>
   </mat-list-item>
 </mat-list>
-
+</form>
 
 <form *ngIf="!isLoading && userIsAuthenticated" #commentForm="ngForm"> 
     <div>
