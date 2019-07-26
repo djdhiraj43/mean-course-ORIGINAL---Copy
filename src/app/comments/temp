@@ -10,3 +10,5 @@ getDepth = function(obj) {
     }
     return 1 + depth
 }
+
+comment_.value, commentForm, {{comment.replyId || comment._id}}
