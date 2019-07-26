@@ -77,7 +77,7 @@ export class CommentsComponent implements OnInit {
            })             
     }
 
-    onAddComment_(formData: object) {
+    onAddComment_(formData: object, form) {
         //comment_, id : string, form
         console.log("formData : "+JSON.stringify(formData));
         //console.log("comment_ : "+comment_);
