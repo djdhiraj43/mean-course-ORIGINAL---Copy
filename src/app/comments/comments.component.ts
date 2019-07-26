@@ -77,18 +77,19 @@ export class CommentsComponent implements OnInit {
            })             
     }
 
-    onAddComment_(formData: object, form) {
+    onAddComment_(formData, form) {
         //comment_, id : string, form
         console.log("formData : "+JSON.stringify(formData));
         //console.log("comment_ : "+comment_);
-        /*if(form.invalid) {
+        if(form.invalid) {
             return;
         }
         this.isLoading = true;
-
+        
         this.postsService.getAuthor(this.authService.getUserId()).subscribe(author => {
-            this.postsService.addComment_(this.postId, comment, author.name);
-           }) */
+            formData.authorName = author.name;
+            this.postsService.addComment_(formData);
+           }) 
     }
     ngOnDestroy(): void {
         this.authStatusSub.unsubscribe();

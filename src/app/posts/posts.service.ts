@@ -141,5 +141,7 @@ export class PostsService {
 
   } 
 
+  addComment_()
+
 }
 
