@@ -2,10 +2,11 @@ import { Post } from './post.model';
 import { Comment } from '../comments/comments.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, ObjectUnsubscribedError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { stringify } from 'querystring';
 
 const BACKEND_URL = environment.apiUrl + "/posts/";
 const BACKEND_URL_AUTHORS = environment.apiUrl + "/authors/";
@@ -141,7 +142,9 @@ export class PostsService {
 
   } 
 
-  addComment_()
+  addComment_(postId: string, commentData) {
+    this.http.put<{message: string, comment: any}>(BACKEND_URL_COMMENTS+)
+  }
 
 }
 

@@ -88,7 +88,7 @@ export class CommentsComponent implements OnInit {
         
         this.postsService.getAuthor(this.authService.getUserId()).subscribe(author => {
             formData.authorName = author.name;
-            this.postsService.addComment_(formData);
+            this.postsService.addComment_(this.postId, formData);
            }) 
     }
     ngOnDestroy(): void {
