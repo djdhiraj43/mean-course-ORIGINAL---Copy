@@ -1,0 +1,8 @@
+var depthCount = function (branch) {
+    if(!branch.comments) {
+        return 1;
+    }
+    return branch.comments.reduce(function (c, b) {
+        return c + depthCount(b);
+    }, 0)
+}
