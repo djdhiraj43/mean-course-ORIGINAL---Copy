@@ -56,5 +56,39 @@ exports.getComments = (req, res, next) => {
   }
 
   exports.nestedComment = (req, res, next) => {
-    console.log("Req body : "+req.body);
+    const postId = mongoose.Types.ObjectId(req.body.postId);
+    const comment = new Comment({
+      createdDate: req.body.createdDate,
+      comment: req.body.comment,
+      authorName: req.body.authorName,
+      level: req.body.level,
+      commentId: req.body.commentId,
+      replyId: req.body.replyId
+    });
+    console.log("comment : "+comment);
+    comment.update(
+      { "_id": postId},
+      { "$push": { "comments": comment } },
+        function (err, raw) {
+        if (err) return handleError(err);
+        console.log('The raw response from Mongo was ', raw);
+        }
+    ).then(createdComment => {
+      return res.status(201).json({
+        message:"Comment added successfully",
+        comment: {
+          postId: createdComment.postId,
+          createdDate: createdComment.createdDate,
+          comment: createdComment.comment,
+          authorName: createdComment.authorName,
+          comments: createdComment.comments
+        }
+      });
+    })
+    .catch(err => {
+      console.log("Error : "+err);
+      res.status(500).json({
+        message: "Creating a comment failed!"
+      })
+    });
   }
