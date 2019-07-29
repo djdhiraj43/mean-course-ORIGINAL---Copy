@@ -12,7 +12,8 @@ const commentSchema = new Schema({
         comment: { type: String, required: true },
         authorName: { type: String, required: true },
         level: { type: Number, required: true},
-        commentId: { type: mongoose.Schema.Types.ObjectId, default: new ObjectId(), required: true },
+        commentId: { type: mongoose.Schema.Types.ObjectId, default: mongoose.Types.ObjectId
+            (), required: true },
         replyId: { type: mongoose.Schema.Types.ObjectId, required: true }
     }]}
 },{collection:"comments"});

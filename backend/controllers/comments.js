@@ -8,7 +8,7 @@ exports.getComments = (req, res, next) => {
     let fetchedComments;
     postQuery.then(comments => {
       fetchedComments = comments;
-      console.log("Fetched Comments : "+fetchedComments);
+      //console.log("Fetched Comments : "+fetchedComments);
       return Comment.count();
     })
     .then(count => {
@@ -53,4 +53,8 @@ exports.getComments = (req, res, next) => {
         message: "Creating a comment failed!"
       })
     });
+  }
+
+  exports.nestedComment = (req, res, next) => {
+    console.log("Req body : "+req.body);
   }
