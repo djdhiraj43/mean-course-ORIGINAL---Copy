@@ -77,11 +77,12 @@ exports.getComments = (req, res, next) => {
       return res.status(201).json({
         message:"Comment added successfully",
         comment: {
-          postId: createdComment.postId,
           createdDate: createdComment.createdDate,
           comment: createdComment.comment,
           authorName: createdComment.authorName,
-          comments: createdComment.comments
+          level: createdComment.level,
+          commentId: createdComment.commentId,
+          replyId: createdComment.replyId
         }
       });
     })
