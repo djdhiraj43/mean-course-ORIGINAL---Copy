@@ -145,6 +145,7 @@ export class PostsService {
   addComment_(postId: string, commentData) {
     this.http.put<{message: string, comment: any}>(BACKEND_URL_COMMENTS + postId, commentData)
       .subscribe((cmtData) => {
+        console.log("Message : "+commentData.message);
         this.router.navigate(["/"]);
       })
   }
