@@ -64,17 +64,18 @@ exports.getComments = (req, res, next) => {
       comment: req.body.comment,
       authorName: req.body.authorName,
       level: req.body.level,
-      commentId: req.body.commentId,
+      commentId: new mongoose.Types.ObjectId(),
       replyId: req.body.replyId
     });
-    //console.log("comment : "+comment);
-    comment.update(
+    console.log("comment ---- : "+comment);
+    comment.updateOne(
       { "_id": id},
       { "$push": { "comments": comment } } ,
         function (err, raw) {
         if(err) { 
-          console.log("err : ---"+err) 
+          return console.log(`err : ${err}`) ;
         };
+        console.log("ObjectId created test : " +new mongoose.Types.ObjectId());
         //console.log('The raw response from Mongo was ', raw);
         }
     ).then(createdComment => {
