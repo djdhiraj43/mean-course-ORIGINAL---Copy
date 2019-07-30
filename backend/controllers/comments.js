@@ -59,6 +59,17 @@ exports.getComments = (req, res, next) => {
     const id = mongoose.Types.ObjectId(req.body.id);
     console.log("id : "+ id);
     console.log("type : "+typeof(id));
+    var comment = new Comment;
+    comment.comments.push(
+      {
+        createdDate: req.body.createdDate,
+        comment: req.body.comment,
+        authorName: req.body.authorName,
+        level: req.body.level,
+        commentId: new mongoose.Types.ObjectId(),
+        replyId: req.body.replyId
+      }
+    )
     const comment = new Comment({
       createdDate: req.body.createdDate,
       comment: req.body.comment,
@@ -76,7 +87,7 @@ exports.getComments = (req, res, next) => {
           return console.log(`err : ${err}`) ;
         };
         console.log("ObjectId created test : " +new mongoose.Types.ObjectId());
-        //console.log('The raw response from Mongo was ', raw);
+        console.log('The raw response from Mongo was ', raw);
         }
     ).then(createdComment => {
       return res.status(201).json({
