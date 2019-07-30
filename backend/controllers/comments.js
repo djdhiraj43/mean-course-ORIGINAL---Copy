@@ -56,7 +56,8 @@ exports.getComments = (req, res, next) => {
   }
 
   exports.nestedComment = (req, res, next) => {
-    const postId = mongoose.Types.ObjectId(req.body.postId);
+    const id = mongoose.Types.ObjectId(req.body.id);
+    console.log("id : "+ id);
     const comment = new Comment({
       createdDate: req.body.createdDate,
       comment: req.body.comment,
@@ -65,13 +66,13 @@ exports.getComments = (req, res, next) => {
       commentId: req.body.commentId,
       replyId: req.body.replyId
     });
-    console.log("comment : "+comment);
+    //console.log("comment : "+comment);
     comment.update(
-      { "_id": postId},
+      { "_id": id},
       { "$push": { "comments": comment } },
         function (err, raw) {
         if (err) return console.log("err : ---"+err);
-        console.log('The raw response from Mongo was ', raw);
+        //console.log('The raw response from Mongo was ', raw);
         }
     ).then(createdComment => {
       return res.status(201).json({
