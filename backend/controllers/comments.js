@@ -70,7 +70,7 @@ exports.getComments = (req, res, next) => {
       { "_id": postId},
       { "$push": { "comments": comment } },
         function (err, raw) {
-        if (err) return handleError(err);
+        if (err) return console.log("err : ---"+err);
         console.log('The raw response from Mongo was ', raw);
         }
     ).then(createdComment => {
