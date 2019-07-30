@@ -70,6 +70,12 @@ exports.getComments = (req, res, next) => {
         replyId: req.body.replyId
       }
     )
+
+    comment.save(function(err) {
+      if(err) return err;
+      console.log("Success!!!!!!!!");
+    })
+    /*
     const comment = new Comment({
       createdDate: req.body.createdDate,
       comment: req.body.comment,
@@ -107,5 +113,5 @@ exports.getComments = (req, res, next) => {
       res.status(500).json({
         message: "Creating a comment failed!"
       })
-    });
+    }); */
   }
