@@ -39,6 +39,7 @@ export class CommentsComponent implements OnInit {
             this.comments = commentsData.comments;
             this.post = this.postsService.getPost(this.postId).subscribe(postData => {
                 this.post = postData;
+                console.log("creator : "+postData.creator);
                 this.postsService.getAuthor(postData.creator).subscribe(author => {
                     this.postAuthor = author.name;
                     this.isLoading = false;

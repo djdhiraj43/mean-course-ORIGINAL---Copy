@@ -11,6 +11,6 @@ const checkAuth = require('../middleware/check-auth');
 
   router.post("/:postId", checkAuth, CommentsController.postComment);
   
-  router.put("/postId", checkAuth, CommentsController.nestedComment);
+  router.put("/:postId", checkAuth, CommentsController.nestedComment);
 
   module.exports = router;
