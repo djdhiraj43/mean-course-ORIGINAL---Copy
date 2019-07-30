@@ -60,21 +60,17 @@ exports.getComments = (req, res, next) => {
     console.log("id : "+ id);
     console.log("type : "+typeof(id));
     var comment = new Comment;
-    comment.comments.push(
-      {
-        createdDate: req.body.createdDate,
-        comment: req.body.comment,
-        authorName: req.body.authorName,
-        level: req.body.level,
-        commentId: new mongoose.Types.ObjectId(),
-        replyId: req.body.replyId
+    comment_ =  {
+        "createdDate": req.body.createdDate,
+        "comment": req.body.comment,
+        "authorName": req.body.authorName,
+        "level": req.body.level,
+        "commentId": new mongoose.Types.ObjectId(),
+        "replyId": req.body.replyId
       }
-    )
+    
 
-    comment.save(function(err) {
-      if(err) return err;
-      console.log("Success!!!!!!!!");
-    })
+    //comment.save();
     /*
     const comment = new Comment({
       createdDate: req.body.createdDate,
@@ -83,8 +79,8 @@ exports.getComments = (req, res, next) => {
       level: req.body.level,
       commentId: new mongoose.Types.ObjectId(),
       replyId: req.body.replyId
-    });
-    console.log("comment ---- : "+comment);
+    });*/
+    console.log("comment_ ---- : "+comment_);
     comment.updateOne(
       { "_id": id},
       { "$push": { "comments": comment } } ,
