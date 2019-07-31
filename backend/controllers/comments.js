@@ -57,6 +57,8 @@ exports.getComments = (req, res, next) => {
 
   exports.nestedComment = (req, res, next) => {
     var iden = req.body.id;    
+    //var comment = new Comment;
+    var Comment = mongoose.model('Comment');
     var comment = new Comment;
     comment_ =  {
         "createdDate": req.body.createdDate,
