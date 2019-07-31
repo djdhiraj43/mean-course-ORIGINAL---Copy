@@ -59,7 +59,7 @@ exports.getComments = (req, res, next) => {
     const id = mongoose.Types.ObjectId(req.body.id);
     console.log("id : "+ id);
     console.log("type : "+typeof(id));
-    var comment = new Comment;
+    var comment = new Comment();
     comment_ =  {
         "createdDate": req.body.createdDate,
         "comment": req.body.comment,
@@ -80,13 +80,14 @@ exports.getComments = (req, res, next) => {
       commentId: new mongoose.Types.ObjectId(),
       replyId: req.body.replyId
     });*/
-    console.log("comment_ ---- : "+comment_);
+    console.log("comment_ ---- : "+JSON.stringify(comment_));
     comment.updateOne(
       { "_id": id},
-      { "$push": { "comments": comment } } ,
+      { "$push": { "comments": comment_ } } ,
         function (err, raw) {
         if(err) { 
-          return console.log(`err : ${err}`) ;
+          //return console.log(`err : ${err}`) ;
+          return err;
         };
         console.log("ObjectId created test : " +new mongoose.Types.ObjectId());
         console.log('The raw response from Mongo was ', raw);
@@ -109,5 +110,5 @@ exports.getComments = (req, res, next) => {
       res.status(500).json({
         message: "Creating a comment failed!"
       })
-    }); */
+    }); 
   }

@@ -89,6 +89,7 @@ export class CommentsComponent implements OnInit {
         
         this.postsService.getAuthor(this.authService.getUserId()).subscribe(author => {
             formData.authorName = author.name;
+            formData.createdDate = new Date();
             this.postsService.addComment_(this.postId, formData);
            }) 
     }
