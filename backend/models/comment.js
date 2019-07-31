@@ -15,6 +15,6 @@ const commentSchema = new Schema({
         commentId: { type: mongoose.Schema.Types.ObjectId, required: true },
         replyId: { type: mongoose.Schema.Types.ObjectId, required: true }
     }]}
-},{collection:"comments"});
+});
 
 module.exports = mongoose.model('Comment', commentSchema);
