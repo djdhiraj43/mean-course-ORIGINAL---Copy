@@ -34,7 +34,7 @@ exports.getComments = (req, res, next) => {
       authorName: req.body.authorName,
       comments: req.body.comments
     });
-    console.log("comment : "+comment);
+    console.log("comment : "+JSON.stringify(comment));
     comment.save().then(createdComment => {
       return res.status(201).json({
         message:"Comment added successfully",
@@ -57,8 +57,8 @@ exports.getComments = (req, res, next) => {
 
   exports.nestedComment = (req, res, next) => {
     var iden = mongoose.Types.ObjectId(req.body.id);
-    console.log("id : "+ id);
-    console.log("type : "+typeof(id));
+    console.log("id : "+ iden);
+    console.log("type : "+typeof(iden));
     var comment = new Comment();
     comment_ =  {
         "createdDate": req.body.createdDate,
