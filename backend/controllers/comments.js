@@ -56,8 +56,8 @@ exports.getComments = (req, res, next) => {
   }
 
   exports.nestedComment = (req, res, next) => {
-    const id = mongoose.Types.ObjectId(req.body.id);
-    //console.log("id : "+ id);
+    var iden = mongoose.Types.ObjectId(req.body.id);
+    console.log("id : "+ id);
     console.log("type : "+typeof(id));
     var comment = new Comment();
     comment_ =  {
@@ -82,7 +82,7 @@ exports.getComments = (req, res, next) => {
     });*/
     console.log("comment_ ---- : "+JSON.stringify(comment_));
     comment.updateOne(
-      { "_id": id},
+      { "_id": iden},
       { "$push": { "comments": comment_ } } ,
         function (err, raw) {
         if(err) { 
