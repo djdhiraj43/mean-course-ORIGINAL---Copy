@@ -57,7 +57,7 @@ exports.getComments = (req, res, next) => {
 
   exports.nestedComment = (req, res, next) => {
     const id = mongoose.Types.ObjectId(req.body.id);
-    console.log("id : "+ id);
+    //console.log("id : "+ id);
     console.log("type : "+typeof(id));
     var comment = new Comment();
     comment_ =  {
@@ -69,7 +69,7 @@ exports.getComments = (req, res, next) => {
         "replyId": req.body.replyId
       }
     
-
+      delete comment_.id;
     //comment.save();
     /*
     const comment = new Comment({

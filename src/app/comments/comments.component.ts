@@ -90,6 +90,8 @@ export class CommentsComponent implements OnInit {
         this.postsService.getAuthor(this.authService.getUserId()).subscribe(author => {
             formData.authorName = author.name;
             formData.createdDate = new Date();
+            var a = new Date();
+            console.log("type of created date : "+typeof(a));
             this.postsService.addComment_(this.postId, formData).subscribe(() => {
                 console.log("Update successful");
             });

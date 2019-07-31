@@ -8,7 +8,7 @@ const commentSchema = new Schema({
     comment: { type: String, required: true },
     authorName: { type: String, required: true },
     comments: { type: [{
-        createdDate: { type: Date, required: true },
+        createdDate: { type: Date, required: [true, 'Created date is absent or in wrong format'] },
         comment: { type: String, required: true },
         authorName: { type: String, required: true },
         level: { type: Number, required: true},
