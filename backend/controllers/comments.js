@@ -69,7 +69,7 @@ exports.getComments = (req, res, next) => {
         "replyId": req.body.replyId
       }
     
-      delete comment_.id;
+      //delete comment_.id;
     //comment.save();
     /*
     const comment = new Comment({
