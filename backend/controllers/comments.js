@@ -92,7 +92,20 @@ exports.getComments = (req, res, next) => {
         console.log("ObjectId created test : " +new mongoose.Types.ObjectId());
         console.log('The raw response from Mongo was ', raw);
         }
-    ).then(createdComment => {
+    )/*.then(result => {
+      if(result.n > 0) {
+        res.status(200).json({message: "Update successful!"});
+      } else {
+        res.status(401).json({message: "Not authorized!"});
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Couldn't update post!"
+      })
+    });
+    
+    /*.then(createdComment => {
       return res.status(201).json({
         message:"Comment added successfully",
         comment: {
@@ -110,5 +123,5 @@ exports.getComments = (req, res, next) => {
       res.status(500).json({
         message: "Creating a comment failed!"
       })
-    }); 
+    }); */
   }
