@@ -86,8 +86,8 @@ exports.getComments = (req, res, next) => {
       { "$push": { "comments": comment_ } } ,
         function (err, raw) {
         if(err) { 
-          //return console.log(`err : ${err}`) ;
-          return err;
+          return console.log(`err : ${err}`) ;
+          //return err;
         };
         console.log('The raw response from Mongo was ', raw);
         }
