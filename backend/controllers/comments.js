@@ -82,7 +82,7 @@ exports.getComments = (req, res, next) => {
     console.log("id : "+ iden);
     console.log("type : "+typeof(iden));
     comment.updateOne(
-      { "_id": iden},
+      { "_id": mongoose.Types.ObjectId(iden)},
       { "$push": { "comments": comment_ } } ,
         function (err, raw) {
         if(err) { 
