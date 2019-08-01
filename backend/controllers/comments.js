@@ -85,20 +85,23 @@ exports.getComments = (req, res, next) => {
     console.log("id : "+ iden);
     console.log("type : "+typeof(iden));
     
-    MongoClient.connect("mongodb+srv://admin:"+ process.env.MONGO_ATLAS_PW +"@cluster0-h5lhb.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true }, function(err, db) {
+    MongoClient.connect("mongodb+srv://admin:"+ process.env.MONGO_ATLAS_PW +"@cluster0-h5lhb.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true }, function(err, client) {
 if(err) {
   throw err;
 } else {
   console.log("Connected to the db");
+  console.log("DB --- : "+JSON.stringify(db));
 }
 
-db.collection('comments').findAndModify(
+var db = client.db('node-angular');
+
+db.collection('comments').updateOne(
   {_id: mongoose.Types.ObjectId(iden)}, // query
   {$push: {comments: comment_}}, // replacement, replaces only the field "hi"
   {}, // options
-  function(err, object) {
+  function(err, object) { 
       if (err){
-          console.warn(err.message);  // returns error if no matching object found
+          console.warn("Error ------ : "+err);  // returns error if no matching object found
       }else{
           console.dir(object);
       }
