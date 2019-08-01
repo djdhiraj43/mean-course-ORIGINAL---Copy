@@ -102,10 +102,12 @@ db.collection('comments').updateOne(
   function(err, object) { 
       if (err){
           console.warn("Error ------ : "+err);  // returns error if no matching object found
+          res.status(401).json({status:0, message: "Comment failed!"});
       }else{
           console.dir(object);
+          res.status(200).json({status:1, message: "Comment posted!"});
       }
-  });
+  })
 });
 
 

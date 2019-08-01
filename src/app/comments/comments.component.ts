@@ -92,12 +92,11 @@ export class CommentsComponent implements OnInit {
             formData.createdDate = new Date();
             var a = new Date();
             console.log("type of created date : "+typeof(a));
-            this.postsService.addComment_(this.postId, formData).subscribe(() => {
-                console.log("Update successful");
-            }, () => {                
+            this.postsService.addComment_(this.postId, formData).subscribe((res) => { 
+                console.log("Response --- : " +JSON.stringify(res));
                 this.isLoading = false;
             });
-           }) 
+           })
     }
     ngOnDestroy(): void {
         this.authStatusSub.unsubscribe();
