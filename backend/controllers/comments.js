@@ -1,6 +1,9 @@
 const Comment = require('../models/comment');
 const mongoose = require('mongoose');
 
+var MongoClient = require('mongodb').MongoClient
+  , format = require('util').format;
+
 exports.getComments = (req, res, next) => {
     const postId = mongoose.Types.ObjectId(req.params.postId);
     console.log("ObjectId type: "+typeof(postId));
@@ -58,7 +61,7 @@ exports.getComments = (req, res, next) => {
   exports.nestedComment = (req, res, next) => {
     var iden = req.body.id;    
     var comment = new Comment;
-    comment_ =  {
+    const comment_ =  {
         "createdDate": req.body.createdDate,
         "comment": req.body.comment,
         "authorName": req.body.authorName,
@@ -81,17 +84,42 @@ exports.getComments = (req, res, next) => {
     console.log("comment_ ---- : "+JSON.stringify(comment_));
     console.log("id : "+ iden);
     console.log("type : "+typeof(iden));
-    comment.updateOne(
+    
+    MongoClient.connect("mongodb+srv://admin:"+ process.env.MONGO_ATLAS_PW +"@cluster0-h5lhb.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true }, function(err, db) {
+if(err) {
+  throw err;
+} else {
+  console.log("Connected to the db");
+}
+
+db.collection('comments').findAndModify(
+  {_id: mongoose.Types.ObjectId(iden)}, // query
+  {$push: {comments: comment_}}, // replacement, replaces only the field "hi"
+  {}, // options
+  function(err, object) {
+      if (err){
+          console.warn(err.message);  // returns error if no matching object found
+      }else{
+          console.dir(object);
+      }
+  });
+});
+
+
+    /*comment.updateOne(
       { "_id": mongoose.Types.ObjectId(iden)},
       { "$push": { "comments": comment_ } } ,
         function (err, raw) {
         if(err) { 
-          return console.log(`err : ${err}`) ;
+          throw err ;
           //return err;
         };
         console.log('The raw response from Mongo was ', raw);
         }
-    )/*.then(result => {
+    )
+    
+    
+    /*.then(result => {
       if(result.n > 0) {
         res.status(200).json({message: "Update successful!"});
       } else {
