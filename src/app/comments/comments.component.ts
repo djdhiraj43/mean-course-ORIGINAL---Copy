@@ -94,6 +94,8 @@ export class CommentsComponent implements OnInit {
             console.log("type of created date : "+typeof(a));
             this.postsService.addComment_(this.postId, formData).subscribe(() => {
                 console.log("Update successful");
+            }, () => {                
+                this.isLoading = false;
             });
            }) 
     }
