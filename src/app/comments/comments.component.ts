@@ -35,8 +35,8 @@ export class CommentsComponent implements OnInit {
           this.postId = paramMap.get('postId');
           //this.isLoading = false;
         });
-        this.postsService.getComments(this.postId);
-        this.postsService.getCommentsUpdateListener().subscribe(commentsData => {
+        //this.postsService.getComments(this.postId);
+        this.postsService.getCommentsAsObs(this.postId).subscribe(commentsData => {
             this.comments = commentsData.comments;
             this.post = this.postsService.getPost(this.postId).subscribe(postData => {
                 this.post = postData;
