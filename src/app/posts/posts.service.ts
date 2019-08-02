@@ -19,6 +19,7 @@ export class PostsService {
   private comments: Comment[] = [];
   private postsUpdated = new Subject<{posts:Post[], postCount: number}>();
   private commentsUpdated = new Subject<{comments:Comment[], commentsCount: number}>();
+  private commentsO = new Subject<{comments: Comment[]}>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -114,6 +115,18 @@ export class PostsService {
       this.comments = commentsData.comments;
       console.log("Comments from posts service : "+ JSON.stringify(commentsData.comments));
       this.commentsUpdated.next({comments: [...this.comments], commentsCount: commentsData.maxComments});
+    })
+    
+  }
+
+  getCommentsAsObs(postId: string) {
+    
+    this.http.get<{message: string, comments: any, maxComments: number }>(BACKEND_URL_COMMENTS + postId)
+    .subscribe(commentsData => {
+      this.comments = commentsData.comments;
+      this.commentsUpdated.next({comments: [...this.comments], commentsCount: commentsData.maxComments});
+      this.commentsO.next({comments: [...this.comments]});
+      return this.commentsO.asObservable();
     })
     
   }
