@@ -23,14 +23,14 @@ export class CommentsComponent implements OnInit {
     post: any;
     postId: any;
     isLoading = true;
-    public comments: Comment[] = [];
+    @Input() comments: Comment[];
     userIsAuthenticated = false;
     userId: string; //
     private authStatusSub: Subscription; //
     constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {};
     ngOnInit(): void {
 
-        this.isLoading = true;
+        this.isLoading = false;
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
           this.postId = paramMap.get('postId');
           //this.isLoading = false;
