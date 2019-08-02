@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Comment } from './comments.model';
 import { PostsService } from '../posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -16,6 +16,7 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
+    
     public level: number = 0;
     public show: boolean = false;
     postAuthor: string;

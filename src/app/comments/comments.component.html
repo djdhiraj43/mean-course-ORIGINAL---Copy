@@ -21,6 +21,7 @@
         <button class="btn" id="{{i}}" (click)="toggle($event)" > &#x270d; </button> <span class="msg" id="msg" style="color: green; display: none"></span>
         <input id="{{i+'c1'}}" class="ic" matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
         <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment_({'comment' :comment_.value, 'replyId': comment.replyId || comment._id, 'level': comment.level+1 || 2, 'id': comment._id}, form)"> Comment</button></p>
+        <post-comments [comments]="comment.comments" *ngIf="comment.comments"></post-comments>
   </mat-list-item>
 </mat-list>
 </form>

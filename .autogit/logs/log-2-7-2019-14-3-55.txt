@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Fri Aug 02 2019 14:03:55 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* backend/controllers/comments.js
+
+
+Created files:
+* .autogit/logs/log-2-7-2019-13-33-49.txt
+
+
+Deleted files:
+
+
+Renamed files:
