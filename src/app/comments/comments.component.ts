@@ -16,7 +16,7 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
-    
+    @Input() checkpoint: boolean =true;
     public level: number = 0;
     public show: boolean = false;
     postAuthor: string;
@@ -36,6 +36,7 @@ export class CommentsComponent implements OnInit {
           //this.isLoading = false;
         });
         //this.postsService.getComments(this.postId);
+        if(this.checkpoint){
         this.postsService.getCommentsAsObs(this.postId).subscribe(commentsData => {
             this.comments = commentsData.comments;
             this.post = this.postsService.getPost(this.postId).subscribe(postData => {
@@ -46,7 +47,7 @@ export class CommentsComponent implements OnInit {
                     this.isLoading = false;
                 })
             })
-        })
+        })}
 
         this.userIsAuthenticated = this.authService.getIsAuth();
         this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
