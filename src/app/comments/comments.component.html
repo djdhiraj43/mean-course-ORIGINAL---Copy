@@ -15,20 +15,19 @@
 
 <form  #form="ngForm">
 <mat-list class="list">
-  <mat-list-item *ngFor="let comment of comments; let i = index" [cmt] class="cmt_">
+  <mat-list-item *ngFor="let comment of comments; let i = index" class="cmt_">
       <p mat-line class="comment">  {{comment.comment}}  </p>
       <p mat-line class="ml" id="cmt">--------{{comment.authorName}}, {{comment.createdDate}} <br>
         <button class="btn" id="{{i}}" (click)="toggle($event)" > &#x270d; </button> <span class="msg" id="msg" style="color: green; display: none"></span>
         <input id="{{i+'c1'}}" class="ic" matInput #comment_ name="comment_" ngModel matInput placeholder="Enter comment" #nameInput="ngModel">
         <button id="{{i+'c2'}}" class="acb" mat-raised-button (click)="onAddComment_({'comment' :comment_.value, 'replyId': comment.replyId || comment._id, 'level': comment.level+1 || 2, 'id': comment._id}, form)"> Comment</button></p>
-        <post-comments [checkpoint]=false [comments]="comment.comments" *ngIf="comment.comments"></post-comments>
+        <post-comments [cmt]="comment" [checkpoint]=false [comments]="comment.comments" *ngIf="comment.comments"></post-comments>
   </mat-list-item>
 </mat-list>
 </form>
 
 
-<div *ngIf="!comment.comments">
-<form  #commentForm="ngForm" > 
+<form #commentForm="ngForm" *ngIf="cmt.comments"> 
     <div>
   <mat-form-field >    
     <input matInput #comment name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
@@ -39,4 +38,3 @@
 </form>
 <p *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
 <p *ngIf="!userIsAuthenticated">Please login to add a comment.</p>
-</div>
