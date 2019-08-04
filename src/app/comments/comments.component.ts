@@ -40,6 +40,7 @@ export class CommentsComponent implements OnInit {
         if(this.checkpoint){
         this.postsService.getCommentsAsObs(this.postId).subscribe(commentsData => {
             this.comments = commentsData.comments;
+            console.log("Comments : ------- " + JSON.stringify(this.comments));
             this.post = this.postsService.getPost(this.postId).subscribe(postData => {
                 this.post = postData;
                 console.log("creator : "+postData.creator);
