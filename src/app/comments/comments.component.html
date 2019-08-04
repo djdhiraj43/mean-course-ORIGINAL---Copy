@@ -13,6 +13,7 @@
   <br>
 </mat-accordion>
 
+<div>
 <form  #form="ngForm">
 <mat-list class="list">
   <mat-list-item *ngFor="let comment of comments; let i = index" class="cmt_">
@@ -25,8 +26,8 @@
   </mat-list-item>
 </mat-list>
 </form>
+</div>
 
-<!--
 <form  #commentForm="ngForm"> 
     <div>
   <mat-form-field >    
@@ -38,4 +39,3 @@
 </form>
 <p *ngIf="comments.length <= 0 && !isLoading">No comments! Be the first one to comment. </p>
 <p *ngIf="!userIsAuthenticated">Please login to add a comment.</p>
--->
