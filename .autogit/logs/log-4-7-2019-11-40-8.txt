@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sun Aug 04 2019 11:40:08 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* backend/models/comment.js
+* src/app/comments/comments.component.html
+* src/app/comments/comments.model.ts
+
+
+Created files:
+* .autogit/logs/log-4-7-2019-11-10-2.txt
+
+
+Deleted files:
+
+
+Renamed files:

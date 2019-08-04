@@ -16,7 +16,8 @@ import { Post } from '../posts/post.model';
 })
 
 export class CommentsComponent implements OnInit {
-    @Input() checkpoint: boolean =true;
+    @Input() cmt: Comment;
+    @Input() checkpoint: boolean =true; // To avoid reloading of comments array from begining
     public level: number = 0;
     public show: boolean = false;
     postAuthor: string;
