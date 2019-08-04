@@ -27,7 +27,7 @@
 </form>
 
 
-<form #commentForm="ngForm" *ngIf="cmt.comments"> 
+<form #commentForm="ngForm" > 
     <div>
   <mat-form-field >    
     <input matInput #comment name="comment" ngModel matInput placeholder="Enter comment" #nameInput="ngModel" required minlength="3">
